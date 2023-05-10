@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+<title>Home Page</title>
+{% endblock%}
+
+{% block content %}
+
+<div class='container' style='margin-top:50px; display:flex; place-content:center;'>
+    <div class='main' style='width:500px; border:1px solid gray; padding:10px; border-radius:5px;'>
+        <form action='' method='POST' enctype="multipart/form-data">   
+        {% csrf_token %} 
+            <div class="mb-3">
+                <label for="email" class="form-label">User Email</label>
+                <input type="email" class="form-control" name='email' placeholder='Enter user email'>
+              </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" name='password' placeholder='Enter password'>
+            </div>  
+            <div class="mb-3">
+                <label for="cpassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" name='cpassword' placeholder='Enter confirm password'>
+              </div>                  
+            <div style='display: flex; place-content: space-between;'>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href='/signin/' class="btn btn-primary"> Back </a >
+            </div>
+          </form>
+    </div>
+</div>   
+{% endblock %}
+
+</html>

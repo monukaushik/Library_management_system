@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+<title>Home Page</title>
+{% endblock%}
+{% block lms %}
+              <a href="#" class="brand-logo">LMS - Admin</a>
+{% endblock %}
+
+{% block header %}
+<li><a href="/custom_admin/">Home </a></li>
+<li><a href="/allstudent/">All Student</a></li>
+<li><a href="/adminbooksummary/">Book Summary </a></li>
+<li><a href="/bookissuedsumadmin/">Book Issued</a></li>
+<li><a href="/addnewbook/">Book Add</a></li>
+<li><a href="/notification/">Notification</a></li>
+<li><a href="/logout/">Logout</a></li>
+
+{% endblock %}
+
+{% block content %}
+<div class='container'>
+    <div style='text-align:center; font-size:30px;'> 
+          <p> All Book Summary </p> </div>
+    </div>
+   <form action='' method='POST' enctype='multipart/form-data'>
+    {% csrf_token %}
+    <div style='width:300px;; margin:10px; display:flex;'>
+        <select class="form-select" aria-label="Default select example" name='class'>
+            <option selected>Select your class hare</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+          <div style='margin-left:20px; padding:5px;'>
+            <button type='submit' class='btn btn-primary'> Submit </button>
+          </div>
+    </div>
+    </form>
+    <div>
+        <table>
+            <tr>
+                <th>Sr.No</th>
+                <th>Book Name</th>
+                <th>Book Image </th>
+                <th>Book Author</th>
+                <th>Book Branch</th>
+                <th>Book Price</th>
+                <th> Book Qty</th>
+                <th> Action </th>
+            </tr>
+         {% for i in all %}
+            <tr>
+                <td> {{forloop.counter}} </td>
+                <td> {{i.bookname }} </td>
+                {% if i.bookimage %}
+                <td><img src="{{i.bookimage.url}}" height="50px" width="50px"></td>
+                {% endif %}
+                <td> {{i.bookauthor}}</td>
+                <td> {{i.branch }} </td>
+                <td> {{i.price }} </td>
+                <td> {{i.Qty }} </td>
+                <td> <a href="/delete/{{i.bookid}}">Delete</a></td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+</html>

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+<title>All Student Page</title>
+{% endblock%}
+{% block lms %}
+              <a href="#" class="brand-logo">LMS - Admin</a>
+{% endblock %}
+
+{% block header %}
+<li><a href="/custom_admin/">Home </a></li>
+<li><a href="/allstudent/">All Student</a></li>
+<li><a href="/adminbooksummary/">Book Summary </a></li>
+<li><a href="/bookissuedsumadmin/">Book Issued</a></li>
+<li><a href="/addnewbook/">Book Add</a></li>
+<li><a href="/notification/">Notification</a></li>
+<li><a href="/logout/">Logout</a></li>
+{% endblock %}
+
+{% block content %}
+
+<div class='container'>
+    <div style='text-align:center; font-size:30px;'> 
+          <p> All Student Summary </p> </div>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <th>Sr.No</th>
+                <th>Student Name</th>
+                <th>Student Image </th>
+                <th>Student Email</th>
+                <th>Student Branch</th>
+                <th>Student Rollno</th>
+                <th>Student Address</th>
+            </tr>
+            {% for i in all_data %}
+            <tr>
+                <td> {{forloop.counter}} </td>
+                <td> {{i.username }} </td>
+                {% if i.studentimg %}
+                <td><img src="{{ i.studentimg.url }}" height="50px" width="50px" </td>
+                {% endif %}
+                <td> {{i.email}}</td>
+                <td> {{i.studentbranch }} </td>
+                <td> {{i.studentrollno}}</td>
+                <td> {{i.studentadd1 }} </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endblock %}
+</html>

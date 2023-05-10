@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+<title>Home Page</title>
+{% endblock%}
+{% block lms %}
+              <a href="#" class="brand-logo">LMS - Student</a>
+{% endblock %}
+
+{% block header %}
+<li><a href="/deshboard/">Deshboard </a></li>
+<li><a href="/logout/">Logout</a></li>
+
+{% endblock %}
+
+{% block content %}
+<div class='container'>
+    <div style='text-align:center; font-size:30px;'> 
+          <p> Issued Book Summary </p> </div>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <th>Sr.No</th>
+                <th>Book Name</th>
+                <th>Book Image </th>
+                <th>Book Author</th>
+                <th>Book Branch</th>
+                <th>Book Price</th>
+                <th> Book Qty</th>
+            </tr>
+         {% for i in alldata %}
+            <tr>
+                <td> {{forloop.counter}} </td>
+                <td> {{i.bookname }} </td>
+                {% if i.bookimage %}
+                <td><img src="{{i.bookimage.url}}" height="50px" width="50px"></td>
+                {% endif %}
+                <td> {{i.bookauthor}}</td>
+                <td> {{i.branch }} </td>
+                <td> {{i.price }} </td>
+                <td> {{i.Qty }} </td>
+            </tr>
+        {% endfor %}
+        </table>
+
+    </div>
+{% endblock %}
+
+</html>

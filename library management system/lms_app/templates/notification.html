@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+<title>Notification Page</title>
+{% endblock%}
+{% block lms %}
+              <a href="#" class="brand-logo">LMS - Admin</a>
+{% endblock %}
+
+{% block header %}
+<li><a href="/custom_admin/">Home </a></li>
+<li><a href="/allstudent/">All Student</a></li>
+<li><a href="/adminbooksummary/">Book Summary </a></li>
+<li><a href="/bookissuedsumadmin/">Book Issued</a></li>
+<li><a href="/addnewbook/">Book Add</a></li>
+<li><a href="/notification/">Notification</a></li>
+<li><a href="/logout/">Logout</a></li>
+{% endblock %}
+
+{% block content %}
+
+<div class='container'>
+    <div style='text-align:center; font-size:30px;'> 
+          <p> Request Pending for Book issue </p> </div>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <th>Sr.No</th>
+                <th>Book Name</th>
+                <th>Student Name </th>
+                <th>Student Class </th>
+                <th>Student Roll</th>
+                <th>Required Quantity</th>
+                <th>Status</th>
+                <th>Action</th>
+                <th>Delete Request</th>
+            </tr>
+            {% for i in request_data%}
+            <tr>
+                <td> {{forloop.counter}} </td>  
+                <td> {{i.bookname }} </td>
+                <td> {{i.stuname}}</td>
+                <td> {{i.branch}}</td>
+                <td> {{i.sturollno }} </td>
+                <td> {{i.requiredqty }}  </td>        
+                <td name='status'> {{i.status }} </td>
+                <td><a href="/Notification2/{{i.bookid}}" type='submit' > Issued </a></td>
+                <td><a href="/delete/{{i.bookid}}" type='submit' > Delete </a></td>
+            </tr>
+            {% endfor %}
+           </table>
+    </div>
+{% endblock %}
+
+</html>

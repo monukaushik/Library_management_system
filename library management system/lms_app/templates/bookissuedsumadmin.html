@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+<title>Bookissued Page</title>
+{% endblock%}
+
+{% block header %}
+<li><a href="/custom_admin/">Home </a></li>
+<li><a href="/allstudent/">All Student</a></li>
+<li><a href="/adminbooksummary/">Book Summary </a></li>
+<li><a href="/bookissuedsumadmin/">Book Issued</a></li>
+<li><a href="/addnewbook/">Book Add</a></li>
+<li><a href="/notification/">Notification</a></li>
+<li><a href="/logout/">Logout</a></li>
+{% endblock %}
+
+{% block content %}
+
+<div class='container'>
+    <div style='text-align:center; font-size:30px;'> 
+          <p> Book Issued Summary </p> </div>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <th>Sr.No</th>
+                <th>Book Name</th>
+                <th>Student Name </th>
+                <th>Student Roll</th>
+                <th>Student Branch</th>
+                <th>Issued Date</th>
+            </tr>
+            {% for i in data3 %}
+            <tr>
+                <td> {{forloop.counter}} </td>
+                <td> {{i.bookname}} </td>
+                <td> {{i.stuname}}</td>
+                <td> {{i.sturollno}}</td>
+                <td> {{i.branch}} </td>
+                <td> {{i.issuedate}} </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+
+</html>
